@@ -1,0 +1,195 @@
+
+/* Navigation */
+.nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 1rem 0;
+  z-index: 10;
+}
+.nav .nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.nav .logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+  text-decoration: none;
+}
+.nav .nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.nav .nav-links a {
+  color: var(--foreground);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav .nav-links a:hover {
+  color: var(--primary);
+}
+
+/* Hero background */
+.hero {
+  background: linear-gradient(135deg, #e0e7ff 0%, #ffffff 100%);
+}
+
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
+/* Color Variables */
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+  --primary: #2563eb;
+  --primary-hover: #1a4bd4;
+  --section-light: #ffffff;
+  --section-dark: #f8f9fa;
+  --card-border: #e0e0e0;
+}
+
+/* Base Typography */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+/* Main Container */
+.main {
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  padding: 0 1rem;
+}
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+@media (min-width: 768px) {
+  .hero h1 {
+    font-size: 4rem;
+  }
+}
+.hero p {
+  font-size: 1.25rem;
+  color: #555555;
+  max-width: 36rem;
+  margin-bottom: 1rem;
+}
+.hero a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.hero a:hover {
+  text-decoration: underline;
+}
+
+/* Section Wrapper */
+.section {
+  padding: 4rem 1rem;
+}
+.section.dark {
+  background: var(--section-dark);
+}
+.container {
+  max-width: 72rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Headings */
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  margin-top: 2rem;
+}
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.card {
+  background: var(--background);
+  border: 1px solid var(--card-border);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  text-align: left;
+}
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.card p {
+  margin-bottom: 0.75rem;
+}
+
+/* Tech Stack and Tools */
+.stack {
+  color: #555555;
+  font-size: 0.875rem;
+}
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.tool {
+  border: 1px solid var(--card-border);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  background: var(--section-light);
+  color: #777777;
+  font-size: 0.875rem;
+}
