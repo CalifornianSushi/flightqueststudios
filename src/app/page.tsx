@@ -1,27 +1,48 @@
-'use client';
+"use client";
+import './globals.css';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import emailjs from 'emailjs-com';
 
-import { motion } from 'framer-motion';
-// src/app/page.tsx
 export default function Home() {
+  const [buttonStatus, setButtonStatus] = useState<"default" | "success" | "error">("default");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+
+    emailjs.sendForm('service_1cy083i', 'template_9vhhjxy', form, '6EDEmxvg0-aeI8R5d')
+      .then(() => {
+        setButtonStatus("success");
+        setTimeout(() => setButtonStatus("default"), 3000);
+        form.reset();
+      }, () => {
+        setButtonStatus("error");
+        setTimeout(() => setButtonStatus("default"), 3000);
+      });
+  };
+
   return (
     <main className="main">
+
       {/* Navigation */}
       <motion.nav
         className="nav"
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", stiffness: 120 }}
       >
         <div className="nav-container">
-          <a href="#" className="logo">FlightQuest Studios</a>
+          <div className="logo">FlightQuest Studios</div>
           <div className="nav-links">
-            <a href="#about">About</a>
             <a href="#projects">Projects</a>
+            <a href="#about">About</a>
             <a href="#tech">Tech</a>
-            <a href="#founder">Founder</a>
+            <a href="#contact">Contact</a>
           </div>
         </div>
       </motion.nav>
+
       {/* Hero Section */}
       <motion.section
         className="hero"
@@ -29,39 +50,12 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <motion.h1
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          FlightQuest Studios
-        </motion.h1>
-        <motion.p
-          initial={{ y: -10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          Where Aviation Meets Innovation
-        </motion.p>
-        <motion.a
-          href="#projects"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          Explore Projects
-        </motion.a>
-      </motion.section>
-
-      {/* About Section */}
-      <section id="about" className="section dark">
-        <div className="container">
-          <h2>About Us</h2>
-          <p>
-            FlightQuest Studios is an engineering focused innovation hub founded by Nimai Garg to fuse aviation software and hardware through interactive educational projects. Our mission is to inspire and educate through immersive simulations and real world tech.
-          </p>
+        <h1>FlightQuest Studios</h1>
+        <p>Where Aviation Meets Innovation</p>
+        <div className="hero-button">
+          <a href="#projects" className="hero-btn">Projects</a>
         </div>
-      </section>
+      </motion.section>
 
       {/* Projects Section */}
       <section id="projects" className="section">
@@ -73,36 +67,38 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.05 }}
             >
               <h3>Aircraft Adventure</h3>
               <p>
-                A flight simulation game with educational quizzes about aircraft specs systems and manufacturers. Built using JavaScript and Phaser, players make real time decisions using fuel management airspeed flaps and more.
+                A flight simulation game with educational quizzes about aircraft specs, systems, and manufacturers. Built using JavaScript and Phaser.
               </p>
-              <p className="stack">Tech Stack JavaScript Phaser HTML5</p>
+              <p className="stack">Tech, Stack, JavaScript, Phaser, HTML5</p>
             </motion.div>
             <motion.div
               className="card"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.05 }}
             >
-              <h3>Flight Control Panel</h3>
+              <h3>NetReach</h3>
               <p>
-                A custom built hardware panel using Arduino that physically controls the in game experience from gear and throttle to flaps and fuel showcasing hardware software integration for real world engineering applications.
+                A real-time network diagnostic tool for low-bandwidth areas. NetReach analyzes packet loss, latency, and jitter, offering plain-language fixes with an LLM chatbot.
               </p>
-              <p className="stack">Tech Stack Arduino USB Bluetooth Embedded C</p>
+              <p className="stack">Tech, Stack, Next.js, JavaScript, Firestore, Tailwind, AI</p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Tech Toolbox Section */}
-      <section id="tech" className="section dark">
+      {/* Tech Section */}
+      <section id="tech" className="section">
         <div className="container">
-          <h2>Our Tech Toolbox</h2>
-          <p>We build projects using cutting edge tools across web development game engines and embedded systems.</p>
+          <h2>Tech Toolbox</h2>
+          <p>
+            We build projects using cutting-edge tools across web development, game engines, and embedded systems.
+          </p>
           <div className="tools">
             <span className="tool">Next.js</span>
             <span className="tool">TypeScript</span>
@@ -115,17 +111,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Founder Section */}
-      <section id="founder" className="section">
-        <div className="container">
-          <h2>Meet the Founder</h2>
-          <p>
-            Nimai Garg is a high school student innovator and founder of multiple ventures including Bright Sparks and Travel Local. Passionate about aviation engineering and software he built FlightQuest Studios to bridge education with real world technology through interactive simulations and embedded systems.
-          </p>
-        </div>
-      </section>
+      {/* Contact Section */}
+<section id="contact" className="section dark">
+  <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Contact</h2>
+  <div className="container contact-grid">
+    <div className="contact-info">
+      <h3>Let's connect</h3>
+      <p>
+        My inbox is always open. Whether you have a question or want to chat, I'll try my best to get back to you as soon as possible!
+      </p>
+    </div>
+    <form onSubmit={handleSubmit} className="contact-form">
+      <div className="form-row">
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Email Address" required />
+      </div>
+      <textarea name="message" rows={4} placeholder="Type your message...." required></textarea>
+      <div className="contact-submit">
+        <button
+          type="submit"
+          className={`hero-btn submit-btn ${buttonStatus}`}
+        >
+          {buttonStatus === "success" ? "Message Sent" : buttonStatus === "error" ? "Failed to Send" : "Submit"}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
 
-      {/* Footer */}
       <footer className="footer">
         © {new Date().getFullYear()} FlightQuest Studios All rights reserved
       </footer>
