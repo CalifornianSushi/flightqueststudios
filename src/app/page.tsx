@@ -1,6 +1,6 @@
 "use client";
 import './globals.css';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from 'emailjs-com';
 
@@ -116,9 +116,9 @@ export default function Home() {
   <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Contact</h2>
   <div className="container contact-grid">
     <div className="contact-info">
-      <h3>Let's connect</h3>
+      <h3>Let&apos;s connect</h3>
       <p>
-        My inbox is always open. Whether you have a question or want to chat, I'll try my best to get back to you as soon as possible!
+        My inbox is always open. Whether you have a question or want to chat, I&apos;ll try my best to get back to you as soon as possible!
       </p>
     </div>
     <form onSubmit={handleSubmit} className="contact-form">
